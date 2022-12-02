@@ -29,7 +29,6 @@ def getSetlist(showid):
 		songs = re.split("->|>|,|Set [0-9]:|Encore:|Encore [0-9]:", text)
 		for i in range(len(songs)):
 			#remove trailing trash data from songs
-			#isue favors pulling the last part off over the first TODO
 			#possibly can favor a combination that drops the song out
 			pattern = re.compile("^(.*)(Trey|;|Sung|Lyrics|Performed|Phish|No intro|Debut|Page|Mike|No W|No \"|No w|lyrics)(.*)$")
 			match = pattern.search(songs[i])
@@ -40,7 +39,6 @@ def getSetlist(showid):
 			if songs[i] == "My Friend": #"My Friend, My Friend" get improperly split
 				songs[i] = "My Friend, My Friend"
 				songs[i+1] = ""
-			 # todo does this write over or copy?
 		try: 
 			shows.remove(0)#empty first element
 			shows.remove(shows.index("0.0"))#will only remove one but i believe only one shows up per setlist anyways
@@ -91,7 +89,3 @@ def main():
 
 if __name__=="__main__":
 	main()
-
-
-# issues
-#erroneus periods
